@@ -1,3 +1,8 @@
+
+
+
+
+
 # World
 - A simple matrix representing the amount information that can be gathered on each tile
 - Finite vs infinite words. Generate more on command
@@ -30,5 +35,12 @@ If the algorithm is simply given a world and a time 't' in which it has to finis
 
 But also, if the world is static anyway and all paths are pre-calculated, then why even apply regeneration? Algorithms won't be able to re-plan their path. UNLESS!! Unless. Hear me out, unless the algorithm calls this regeneration step itself.
 
-# Visualizing
-How?
+# Next steps
+## Algorithm
+* Create an algorithm that incrementally improves its solution. Current algorithms start from scratch each time, and rely on intermittend random steps to find a better solution.
+* Create either 1) algorithms that are aware of each other, 2) an overarching manager able to instruct and guide algorithms to work together.
+
+## Project management
+* Implement tests
+* Add CICD pipeline for automatic formatting and testing
+* Add a license

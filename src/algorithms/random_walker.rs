@@ -1,7 +1,7 @@
 use derive_more::Constructor;
-use std::sync::Arc;
+use std::{sync::Arc, thread, time::Duration};
 
-use crate::data_structures::{problem::Problem, solution::Solution};
+use crate::data_structures::{colors::Color, problem::Problem, solution::Solution};
 
 use super::Algorithm;
 
@@ -35,9 +35,14 @@ impl Algorithm for RandomWalker {
                     break;
                 }
             }
+
+            // Store the current path
+            visited.push((at_y as i64, at_x as i64));
+            self.solution
+                .submit_path_in_progress(Color::MAGENTA, &visited);
+            thread::sleep(Duration::from_millis(1));
         }
 
-        tracing::info!("Random Walker: Score: {}", score);
         if self.solution.submit_path(&visited, score) {
             tracing::info!("Random Walker: New high score: {}", score);
         }

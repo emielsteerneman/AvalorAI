@@ -18,6 +18,8 @@ mod data_structures;
 use data_structures::problem::Problem;
 use data_structures::solution::Solution;
 
+mod visualisation;
+
 fn main() {
     tracing_subscriber::fmt::init();
     color_eyre::install().expect("Failed to install color_eyre");
@@ -26,13 +28,13 @@ fn main() {
     let stop_signal = Arc::new(AtomicBool::new(false));
 
     // Create Problem and Solution
-    let N = 100;
-    let world = world::World::random(N, 0.);
+    let N = 200;
+    let world = world::World::perlin(N, 0.95);
     let (start_x, start_y) = (
         rand::random_range(0..N) as i64,
         rand::random_range(0..N) as i64,
     );
-    let problem: Problem = Problem::new(world.clone(), 1000, 20, start_y, start_x);
+    let problem: Problem = Problem::new(world.clone(), 3000, 2000, start_y, start_x);
     let solution = Arc::new(Solution::default());
 
     tracing::info!(
@@ -43,6 +45,14 @@ fn main() {
         start_y,
         start_x
     );
+
+
+    // Create visualizer
+    let visualizer = visualisation::window::MyWindow::new(problem.clone(), solution.clone());
+    let visualizer_thread = visualizer.run(60);
+    
+    // visualizer_thread.join().expect("Visualizer thread failed to join.");
+    // return;
 
     // Create hill climber and random walker
     let mut hc = HillClimber::new(problem.clone(), solution.clone());
@@ -67,9 +77,11 @@ fn main() {
 
     // Get final path from solution
     let final_path: Vec<(i64, i64)> = solution.path.lock().unwrap().clone();
-    tracing::info!("Final vector collected by main thread: {:?}", final_path);
+    // tracing::info!("Final vector collected by main thread: {:?}", final_path);
 
     // Wait for the worker to finish
     hc_thread.join().expect("HC thread failed to join.");
     rw_thread.join().expect("RW thread failed to join.");
+    visualizer_thread.join().expect("Visualizer thread failed to join.");
+
 }

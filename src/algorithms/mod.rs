@@ -24,3 +24,4 @@ pub trait Algorithm {
 
 pub mod hill_climber;
 pub mod random_walker;
+pub mod random_improver;

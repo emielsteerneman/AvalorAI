@@ -79,7 +79,10 @@ fn main() {
 
     // Get final path from solution
     let _: Vec<(i64, i64)> = solution.path.lock().unwrap().clone();
-    tracing::info!("Final path collected by main thread with score {}", solution.get_score());
+    tracing::info!(
+        "Final path collected by main thread with score {}",
+        solution.get_score()
+    );
 
     // Wait for the worker to finish
     hc_thread.join().expect("HC thread failed to join.");

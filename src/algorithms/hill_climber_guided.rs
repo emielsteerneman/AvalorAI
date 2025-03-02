@@ -16,7 +16,6 @@ pub struct HillClimberGuided {
 }
 
 impl Algorithm for HillClimberGuided {
-
     fn next_step(&mut self) {
         let mut visited = Vec::<(i64, i64)>::with_capacity(self.problem.n_steps as usize);
         let (mut at_x, mut at_y) = (self.problem.start_x, self.problem.start_y);

@@ -8,7 +8,7 @@ use std::{
 };
 
 /// This trait is used to implement algorithms. The run function is used to continuously run the algorithm
-/// The initial_step function is used to initialize the algorithm if needed. The next_step function is used 
+/// The initial_step function is used to initialize the algorithm if needed. The next_step function is used
 /// to improve upon any previously found solutions
 pub trait Algorithm {
     fn run(&mut self, stop_signal: Arc<AtomicBool>) {
@@ -22,7 +22,7 @@ pub trait Algorithm {
         }
     }
 
-    fn initial_step(&mut self) { }
+    fn initial_step(&mut self) {}
 
     fn next_step(&mut self);
 }

@@ -1,8 +1,7 @@
-use std::{collections::HashMap, sync::Arc, thread};
+use std::{sync::Arc, thread};
 
 use derive_more::Constructor;
 use minifb::{Key, Window, WindowOptions};
-use rand::Rng;
 
 use crate::{
     data_structures::{problem::Problem, solution::Solution},

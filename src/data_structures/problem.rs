@@ -1,6 +1,7 @@
 use derive_more::Constructor;
 
 use crate::world::World;
+
 #[derive(Clone, Constructor)]
 pub struct Problem {
     pub world: World,

@@ -29,6 +29,7 @@ The world is represented as a finite 2D integer grid. The world can either be fi
 * Implement tests
 * Improved logging
 * Better edge case management. Some edge cases, such as time T expiring before any algorithm has found a solution, are currently not handled.
+* Add command line flags instead of hardcoding the problem parameters
 
 ## Project management
 * Add CICD pipeline for automatic formatting and testing

@@ -18,7 +18,7 @@ pub trait Algorithm {
             self.next_step();
             // Sleep for 100 millisecond to prevent the thread from using 100% of the CPU
             // This is useful for algorithms that finish extremely quickly
-            thread::sleep(Duration::from_millis(100));
+            thread::sleep(Duration::from_millis(1));
         }
     }
 

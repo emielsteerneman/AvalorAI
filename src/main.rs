@@ -25,8 +25,8 @@ fn main() {
 
     // Create Problem and Solution
     let grid_size = 100;
-    // let world = world::World::perlin(grid_size, 0.1);
-    let world = world::World::random(grid_size, 0.0);
+    let world = world::World::perlin(grid_size, 0.5);
+    // let world = world::World::random(grid_size, 0.0);
 
     let (start_x, start_y) = (
         rand::random_range(0..grid_size) as i64,
